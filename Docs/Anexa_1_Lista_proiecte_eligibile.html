@@ -1,0 +1,328 @@
+<title>Anexa 1 Sponsorizare Lubavitch</title>
+<meta name="description" content="Lista proiectelor eligibile la finanțare din sponsorizare, structurată ca checklist arborescent pe activitățile din contract și obiectivele din statutul Asociației Lubavitch.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: registry-style document. Sticky summary bar (projects selected, budget allocated vs. contract value), one column of collapsible sections a)–e) + conditions; each leaf is a check row with budget, period and owner. */
+:root{
+  --bg:#f3f5f8; --paper:#ffffff; --fg:#17202b; --muted:#5a6878; --faint:#8b97a5; --rule:#d7dde5; --rule-2:#c3ccd6;
+  --ink:#1f3d66; --ink-soft:#e4ebf5; --brass:#8a6420; --brass-soft:#f5ecd8;
+  --ok:#237a4a; --ok-soft:#dff1e5; --bad:#a63a2e; --bad-soft:#f8e1dd; --todo:#b8c2cd;
+  --display:"Fraunces",Georgia,"Times New Roman",serif;
+  --body:"Public Sans","Segoe UI",system-ui,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#121923; --paper:#1a2330; --fg:#e6ebf1; --muted:#a2aebb; --faint:#73818f; --rule:#2c3a4a; --rule-2:#3a4a5c;
+  --ink:#9fbde6; --ink-soft:#223349; --brass:#dcb463; --brass-soft:#3a2f16;
+  --ok:#6fcf97; --ok-soft:#1d3a2a; --bad:#f08f84; --bad-soft:#402220; --todo:#4b5a6a; color-scheme:dark }}
+:root[data-theme="dark"]{
+  --bg:#121923; --paper:#1a2330; --fg:#e6ebf1; --muted:#a2aebb; --faint:#73818f; --rule:#2c3a4a; --rule-2:#3a4a5c;
+  --ink:#9fbde6; --ink-soft:#223349; --brass:#dcb463; --brass-soft:#3a2f16;
+  --ok:#6fcf97; --ok-soft:#1d3a2a; --bad:#f08f84; --bad-soft:#402220; --todo:#4b5a6a; color-scheme:dark }
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:15.5px;line-height:1.5;margin:0;font-variant-numeric:tabular-nums}
+.wrap{max-width:980px;margin:0 auto;padding-inline:16px;padding-block:0 72px}
+h1,h2,h3{margin:0;text-wrap:balance}
+button{font:inherit;color:inherit;cursor:pointer}
+input{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--brass);outline-offset:2px}
+
+/* Masthead */
+.mast{padding-block:30px 18px;border-bottom:1px solid var(--rule)}
+.eyebrow{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 8px}
+.mast h1{font-family:var(--display);font-weight:600;font-size:clamp(25px,3.6vw,36px);line-height:1.12}
+.mast .sub{margin:8px 0 0;color:var(--muted);max-width:70ch}
+.parties{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin-top:18px}
+.party{border:1px solid var(--rule);border-left:3px solid var(--ink);background:var(--paper);padding:10px 14px;min-width:0}
+.party span{display:block;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.party b{font-weight:600}
+.party p{margin:2px 0 0;font-size:13.5px;color:var(--muted)}
+.party.todo{border-left-color:var(--brass)}
+.party input{width:100%;margin-top:4px;background:transparent;border:0;border-bottom:1px dashed var(--rule-2);padding:3px 0;min-width:0}
+.party input.mono{font-family:var(--mono);font-size:14px}
+.basis{margin:16px 0 0;padding:10px 14px;border:1px solid var(--rule);background:var(--paper);font-size:14px;color:var(--muted)}
+.basis b{color:var(--fg);font-weight:600}
+
+/* Sticky summary */
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--paper);border-bottom:1px solid var(--rule);margin-inline:-16px;padding-inline:16px;padding-block:10px}
+.bar-in{max-width:980px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;gap:8px 18px}
+.stat{display:flex;flex-direction:column;min-width:0}
+.stat span{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.stat b{font-family:var(--mono);font-size:14px;white-space:nowrap}
+.stat b.over{color:var(--bad)}
+.prog{display:flex;align-items:center;gap:10px;flex:1 1 180px;min-width:0}
+.track{flex:1;height:8px;border-radius:4px;background:var(--rule);overflow:hidden;min-width:60px}
+.track i{display:block;height:100%;width:0;background:var(--ok);transition:width .2s}
+.track i.over{background:var(--bad)}
+@media (prefers-reduced-motion:reduce){.track i{transition:none}}
+.acts{display:flex;flex-wrap:wrap;gap:6px;margin-left:auto}
+.btn{border:1px solid var(--rule-2);background:var(--paper);border-radius:6px;padding:5px 11px;font-size:13.5px;font-weight:500}
+.btn:hover{border-color:var(--ink);color:var(--ink)}
+.btn.pri{background:var(--ink);border-color:var(--ink);color:#fff}
+:root[data-theme="dark"] .btn.pri{color:#121923}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .btn.pri{color:#121923}}
+.toast{position:fixed;left:50%;bottom:calc(16px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--fg);color:var(--bg);padding:8px 14px;border-radius:6px;font-size:13.5px;z-index:9;max-width:calc(100% - 32px)}
+
+/* Tree */
+.tree{list-style:none;margin:18px 0 0;padding:0;display:grid;gap:10px}
+.sec{background:var(--paper);border:1px solid var(--rule);border-radius:6px;overflow:hidden}
+.sec-h{display:grid;grid-template-columns:auto auto minmax(0,1fr) auto;gap:10px;align-items:center;width:100%;text-align:left;background:none;border:0;padding:12px 14px;border-left:4px solid var(--ink)}
+.sec-h:hover{background:var(--ink-soft)}
+.sec-h .tg{width:18px;height:18px;display:grid;place-items:center;color:var(--faint)}
+.sec-h .tg svg{width:12px;height:12px;transition:transform .15s}
+.sec-h[aria-expanded="true"] .tg svg{transform:rotate(90deg)}
+@media (prefers-reduced-motion:reduce){.sec-h .tg svg{transition:none}}
+.sec-h .k{font-family:var(--display);font-size:21px;font-weight:600;color:var(--ink);line-height:1;width:1.3em}
+.sec-h h2{font-size:16.5px;font-weight:600;min-width:0}
+.sec-h small{display:block;font-weight:400;color:var(--muted);font-size:13px;line-height:1.35}
+.sec-h .n{display:flex;flex-direction:column;align-items:flex-end;gap:2px;font-family:var(--mono);font-size:12.5px;color:var(--muted);white-space:nowrap}
+.sec-h .n em{font-style:normal;color:var(--fg)}
+.sec.cond .sec-h{border-left-color:var(--brass)}
+.sec-b{border-top:1px solid var(--rule);padding:6px 10px 10px}
+.sub{list-style:none;margin:0;padding:0}
+.row{display:grid;grid-template-columns:22px minmax(0,1fr) auto;gap:6px 10px;align-items:start;padding:7px 6px;border-radius:5px}
+.row:hover{background:var(--ink-soft)}
+.row input[type=checkbox]{width:17px;height:17px;margin:3px 0 0;accent-color:var(--ok);cursor:pointer}
+.row .t{min-width:0;cursor:pointer}
+.row .t b{font-weight:600}
+.row .t p{margin:2px 0 0;font-size:13.5px;color:var(--muted)}
+.row .ref{font-family:var(--mono);font-size:11.5px;color:var(--brass);white-space:nowrap;padding-top:3px}
+.row .ref:empty{display:none}
+.fields{grid-column:2 / -1;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr) minmax(0,1fr);gap:6px}
+.fields input{width:100%;min-width:0;background:var(--bg);border:1px solid var(--rule);border-radius:4px;padding:4px 7px;font-size:13px}
+.fields input.num{font-family:var(--mono);text-align:right}
+.fields input::placeholder{color:var(--faint);font-family:var(--body);text-align:left}
+.row.off .fields{display:none}
+.row.off .t b{color:var(--muted);font-weight:500}
+.tg-list{padding:8px 6px 2px;font-size:13px;color:var(--muted);border-top:1px dashed var(--rule);margin-top:6px}
+.tg-list b{color:var(--fg);font-weight:600}
+.tg-list ul{margin:2px 0 0;padding-left:18px}
+.sig{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin-top:22px}
+.sig div{border-top:1px solid var(--rule-2);padding-top:8px;font-size:14px}
+.sig span{display:block;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+footer{margin-top:28px;padding-top:12px;border-top:1px solid var(--rule);font-size:13px;color:var(--muted);max-width:70ch}
+@media (max-width:640px){
+  .fields{grid-template-columns:minmax(0,1fr)}
+  .row{grid-template-columns:22px minmax(0,1fr)}
+  .row .ref{grid-column:2;padding-top:0}
+  .sec-h{grid-template-columns:auto auto minmax(0,1fr)}
+  .sec-h .n{grid-column:3;flex-direction:row;gap:10px;justify-self:end}
+  .acts{margin-left:0}
+}
+</style>
+
+<div class="wrap">
+<header class="mast">
+  <p class="eyebrow">Anexa nr. 1 la Contractul de sponsorizare · Legea nr. 32/1994, art. 4 alin. (1) lit. a)</p>
+  <h1>Lista proiectelor eligibile la finanțare din sponsorizarea acordată prin contract</h1>
+  <p class="sub">Arborele urmează activitățile enumerate la art. 1.4 din contract și obiectivele din art. 2.2 al Statutului. Bifează proiectele pe care le finanțează această sponsorizare, alocă bugetul pe fiecare și completează perioada și responsabilul. Pagina reține ce ai completat în browserul tău.</p>
+  <div class="parties">
+    <div class="party"><span>Beneficiar</span><b>Asociația „Lubavitch”</b><p>CIF 54735214 · Str. Ion Slătineanu nr. 6, et. 2, ap. 3, cam. 1, Sector 1, București · președinte Deutsch Naftali Matityauo</p></div>
+    <div class="party todo"><span>Sponsor</span><input type="text" id="f-sponsor" placeholder="Denumire, CUI, reprezentant legal"><p>Din preambulul contractului</p></div>
+    <div class="party todo"><span>Contract</span><input type="text" id="f-contract" placeholder="Nr. ___ din __.__.____"><p>Numărul și data înregistrării</p></div>
+    <div class="party todo"><span>Valoarea sponsorizării (art. 2.1)</span><input type="text" class="mono" id="f-suma" inputmode="decimal" placeholder="0 lei"><p>Se virează în 10 zile lucrătoare, cel târziu 15 zile (art. 2.2)</p></div>
+  </div>
+  <p class="basis"><b>Temei.</b> Sponsorizarea susține activitatea generală a Beneficiarului, fără a fi limitată la un proiect (art. 1.1 și 1.3). Anexa stabilește lista proiectelor pentru care Beneficiarul își asumă utilizarea sumei, cu condiția conformității cu scopul și obiectivele statutare (art. 5.2 lit. a). Utilizarea în alt scop atrage restituirea părții neconforme în 10 zile lucrătoare (art. 7.3).</p>
+</header>
+
+<div class="bar"><div class="bar-in">
+  <div class="stat"><span>Proiecte eligibile</span><b id="cnt">0 / 0</b></div>
+  <div class="stat"><span>Buget alocat</span><b id="alloc">0 lei</b></div>
+  <div class="stat"><span>Nealocat</span><b id="rest">—</b></div>
+  <div class="prog"><div class="track"><i id="fill"></i></div></div>
+  <div class="acts">
+    <button class="btn" id="b-exp">Desfășoară tot</button>
+    <button class="btn" id="b-col">Restrânge tot</button>
+    <button class="btn pri" id="b-md">Copiază ca Markdown</button>
+    <button class="btn" id="b-reset">Golește bifele</button>
+  </div>
+</div></div>
+
+<ul class="tree" id="tree"></ul>
+
+<div class="sig">
+  <div><span>Sponsor</span>Nume, funcție, data, semnătura</div>
+  <div><span>Beneficiar · Asociația „Lubavitch”</span>Președinte Deutsch Naftali Matityauo, data, semnătura</div>
+</div>
+
+<footer>Surse: Contractul de sponsorizare (art. 1.4, 2, 4, 5, 6.2, 7.3), Statutul Asociației „Lubavitch” (art. 2.2 lit. A–D, art. 13 lit. b), Legea nr. 32/1994. Anexa se semnează odată cu contractul, în două exemplare originale.</footer>
+</div>
+<div class="toast" id="toast" role="status" hidden></div>
+
+<script>
+/* Arbore: secțiune (activitate din contract, art. 1.4) → proiect (obiectiv din Statut, art. 2.2). Un proiect are: titlu, detaliu, trimitere, câmpuri (buget, perioadă, responsabil). */
+const TREE = [
+  { k:'a', t:'Servicii religioase pentru membrii comunității evreiești', d:'Contract art. 1.4 lit. a) · Statut art. 2.2 lit. A', items:[
+    { t:'Întreținerea clădirii Sinagogii Yeshua Tova', p:'Reparații, utilități, curățenie, pază, dotări ale lăcașului', ref:'Statut A.1' },
+    { t:'Servicii religioase zilnice la Sinagoga Yeshua Tova', p:'Desfășurarea serviciilor religioase și cheltuielile lor curente', ref:'Statut A.2' },
+    { t:'Lecții de Talmud, Torah, Tanya', p:'Cursuri și cercuri de studiu, materiale didactice, lectori', ref:'Statut A.3' },
+    { t:'Clase de religie', p:'Clase pentru copii și adulți, programă, materiale', ref:'Statut A.4' },
+    { t:'Evenimente de sărbători religioase', p:'Organizarea sărbătorilor din calendarul iudaic: spațiu, mese, materiale rituale', ref:'Statut A.5' },
+    { t:'Kabalat Shabat și Shabat pentru membrii comunității', p:'Mese de Shabat, invitați, logistică', ref:'Statut A.6' },
+    { t:'Cercul Bar și Bat Mitzvah', p:'Pregătirea și ceremoniile tinerilor comunității', ref:'Statut A.7' }
+  ], tg:['Persoane de etnie evreiască cu reședința permanentă sau temporară în București','Persoane de etnie evreiască în tranzit prin București','Studenți de etnie evreiască aflați la studii în București'] },
+  { k:'b', t:'Reprezentarea membrilor comunității în relația cu autoritățile române', d:'Contract art. 1.4 lit. b) · Statut art. 2.2 lit. B', items:[
+    { t:'Reprezentarea în relația cu autoritățile române a membrilor comunității care frecventează Sinagoga', p:'Demersuri, corespondență, consiliere, participare la întâlniri instituționale', ref:'Statut B' }
+  ] },
+  { k:'c', t:'Promovarea valorilor culturii ebraice și ale religiei iudaice', d:'Contract art. 1.4 lit. c) · Statut art. 2.2 lit. C', items:[
+    { t:'Lecții de ebraică', p:'Cursuri de limbă pentru copii și adulți, profesori, manuale', ref:'Statut C.1' },
+    { t:'Sărbători și festivaluri israeliene', p:'Evenimente organizate cu ocazia sărbătorilor israeliene', ref:'Statut C.2' },
+    { t:'Evenimente culturale', p:'Expoziții, concerte, conferințe, proiecții, comemorări', ref:'Statut C.3' },
+    { t:'Activități sociale pentru copii', p:'Tabere, ateliere, cluburi, excursii', ref:'Statut C.4' }
+  ], tg:['Membrii familiilor de evrei cu reședința permanentă sau temporară în București','Rezidenți în România, adepți ai altor religii, interesați de cultura ebraică, religia iudaică și istoria poporului evreu'] },
+  { k:'d', t:'Asistența socială a persoanelor nevoiașe, în vârstă sau cu nevoi speciale', d:'Contract art. 1.4 lit. d) · Statut art. 2.2 lit. D', items:[
+    { t:'Medicamente', p:'Procurarea de medicamente pentru persoane nevoiașe', ref:'Statut D.1.a' },
+    { t:'Produse alimentare de bază', p:'Pachete cu alimente de bază', ref:'Statut D.1.b' },
+    { t:'Produse alimentare gata preparate', p:'Mese calde și hrană preparată, inclusiv livrare la domiciliu', ref:'Statut D.1.c' },
+    { t:'Produse de igienă', p:'Pachete cu produse de igienă personală și a locuinței', ref:'Statut D.1.d' },
+    { t:'Vizite la domiciliul vârstnicilor și al persoanelor cu nevoi speciale', p:'Voluntari și personal, transport, materiale', ref:'Statut D.2.a' },
+    { t:'Sprijin și însoțire în activitățile casnice', p:'Ajutor la cumpărături, curățenie, administrare gospodărie', ref:'Statut D.2.b' },
+    { t:'Însoțirea la plimbare', p:'Însoțirea persoanelor vârstnice și cu nevoi speciale în afara locuinței', ref:'Statut D.2.c' },
+    { t:'Acompanierea la vizitele medicale', p:'Transport și însoțire la consultații, analize, spitalizare', ref:'Statut D.2.d' },
+    { t:'Invitații pentru Kabalat Shabat și Shabat', p:'Participarea persoanelor asistate la mesele de Shabat ale comunității', ref:'Statut D.3' }
+  ], tg:['Persoane nevoiașe, indiferent de religie','Studenți israelieni nevoiași sau cu nevoi speciale aflați la studii în România','Persoane vârstnice, membri ai comunității evreiești rezidenți în București și zonele limitrofe','Persoane de religie iudaică care solicită asistență comunitară sau religioasă'] },
+  { k:'e', t:'Costurile de organizare și desfășurare a activităților de mai sus', d:'Contract art. 1.4 lit. e) · cheltuieli comune ale proiectelor bifate la a)–d)', items:[
+    { t:'Personal și colaboratori alocați activităților', p:'Salarii și onorarii proporțional cu timpul lucrat pe proiectele finanțate', ref:'art. 1.4 e)' },
+    { t:'Spații: chirie, utilități, întreținere', p:'Cota aferentă spațiilor folosite pentru activitățile finanțate', ref:'art. 1.4 e)' },
+    { t:'Materiale, consumabile, logistică și transport', p:'Achiziții curente, transport persoane și bunuri, echipamente mărunte', ref:'art. 1.4 e)' },
+    { t:'Informare și mențiunea sponsorului', p:'Materiale de informare cu numele, emblema sau logo-ul sponsorului, cu acordul prealabil scris al acestuia, fără reclamă comercială', ref:'art. 4 b), 5.1, 5.2 b)' },
+    { t:'Servicii administrative, contabile și juridice aferente', p:'Evidența distinctă a sponsorizării și raportarea utilizării', ref:'art. 1.4 e)' }
+  ] },
+  { k:'f', t:'Condiții de eligibilitate aplicabile fiecărui proiect', d:'Se confirmă pentru toate proiectele bifate mai sus', cond:true, plain:true, items:[
+    { t:'Conform scopului și obiectivelor statutare', p:'Proiectul se încadrează în art. 2.2 din Statut și în art. 1 din contract', ref:'art. 1.1, 5.2 a)' },
+    { t:'Fără contraprestație comercială către sponsor', p:'Sponsorul nu primește servicii, publicitate sau alte beneficii economice', ref:'art. 1.2' },
+    { t:'Fără reclamă sau publicitate comercială', p:'Mențiunea sponsorului se face în limitele Legii nr. 32/1994', ref:'art. 5.1' },
+    { t:'Acordul scris al sponsorului pentru numele, emblema și logo-ul folosite', p:'Obținut înainte de realizarea materialelor de informare', ref:'art. 5.2 b)' },
+    { t:'Sănătatea și securitatea participanților', p:'Respectarea dispozițiilor legale pentru activitățile cu participanți', ref:'art. 5.2 c)' },
+    { t:'Confidențialitate și etică', p:'Informațiile nepublice ale sponsorului rămân confidențiale; fără acte de corupție', ref:'art. 5.2 d), e)' },
+    { t:'Fără acțiunile interzise la art. 6.2', p:'Nimic ilicit, contrar bunelor moravuri, discriminatoriu sau care încalcă drepturile de autor', ref:'art. 6.2' },
+    { t:'Evidență distinctă și dovada utilizării', p:'Documente justificative pe fiecare proiect, pentru a dovedi utilizarea conformă și a evita restituirea', ref:'art. 7.3' }
+  ] }
+];
+
+const KEY = 'lubavitch.anexa1.proiecte.v1';
+let S = { c:{}, v:{}, open:{} };
+try { const raw = localStorage.getItem(KEY); if (raw) S = Object.assign(S, JSON.parse(raw)); } catch (e) {}
+function save(){ try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) {} }
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const CHEV = '<svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 2l4 4-4 4"/></svg>';
+const num = s => { const n = parseFloat(String(s || '').replace(/\s/g, '').replace(/\./g, '').replace(',', '.')); return isNaN(n) ? 0 : n; };
+const lei = n => new Intl.NumberFormat('ro-RO', { maximumFractionDigits: 0 }).format(Math.round(n)) + ' lei';
+const ids = sec => sec.items.map((_, i) => sec.k + i);
+const secBudget = sec => ids(sec).reduce((a, id) => a + (S.c[id] ? num((S.v[id] || {}).b) : 0), 0);
+
+function render(){
+  document.getElementById('tree').innerHTML = TREE.map(sec => {
+    const open = S.open[sec.k] !== false;
+    const list = ids(sec), done = list.filter(id => S.c[id]).length;
+    const n = sec.plain ? '<em>' + done + ' / ' + list.length + '</em>'
+      : '<em>' + done + ' / ' + list.length + ' proiecte</em><span>' + lei(secBudget(sec)) + '</span>';
+    return '<li class="sec' + (sec.cond ? ' cond' : '') + '">' +
+      '<button class="sec-h" data-k="' + sec.k + '" aria-expanded="' + open + '" aria-controls="b-' + sec.k + '">' +
+        '<span class="tg">' + CHEV + '</span><span class="k">' + sec.k + ')</span>' +
+        '<h2>' + esc(sec.t) + '<small>' + esc(sec.d) + '</small></h2>' +
+        '<span class="n">' + n + '</span>' +
+      '</button>' +
+      '<div class="sec-b" id="b-' + sec.k + '"' + (open ? '' : ' hidden') + '><ul class="sub">' +
+        sec.items.map((it, i) => row(sec.k + i, it, sec.plain)).join('') +
+      '</ul>' + (sec.tg ? '<div class="tg-list"><b>Grupuri țintă</b> (Statut)<ul>' + sec.tg.map(x => '<li>' + esc(x) + '</li>').join('') + '</ul></div>' : '') +
+      '</div></li>';
+  }).join('');
+  summary();
+}
+function row(id, it, plain){
+  const v = S.v[id] || {}, on = !!S.c[id];
+  return '<li class="row' + (on ? '' : ' off') + '">' +
+    '<input type="checkbox" id="c-' + id + '"' + (on ? ' checked' : '') + ' aria-label="' + esc(it.t) + '">' +
+    '<label class="t" for="c-' + id + '"><b>' + esc(it.t) + '</b>' + (it.p ? '<p>' + esc(it.p) + '</p>' : '') + '</label>' +
+    '<span class="ref">' + esc(it.ref || '') + '</span>' +
+    (plain ? '' : '<div class="fields">' +
+      '<input type="text" class="num" id="b-' + id + '" data-f="b" inputmode="decimal" placeholder="Buget alocat (lei)" value="' + esc(v.b || '') + '">' +
+      '<input type="text" id="p-' + id + '" data-f="p" placeholder="Perioada" value="' + esc(v.p || '') + '">' +
+      '<input type="text" id="r-' + id + '" data-f="r" placeholder="Responsabil" value="' + esc(v.r || '') + '">' +
+    '</div>') +
+  '</li>';
+}
+function summary(){
+  const projSecs = TREE.filter(s => !s.plain);
+  const all = projSecs.flatMap(ids), on = all.filter(id => S.c[id]).length;
+  const alloc = projSecs.reduce((a, s) => a + secBudget(s), 0);
+  const total = num(document.getElementById('f-suma').value);
+  document.getElementById('cnt').textContent = on + ' / ' + all.length;
+  const a = document.getElementById('alloc'); a.textContent = lei(alloc); a.classList.toggle('over', total > 0 && alloc > total);
+  const r = document.getElementById('rest'); r.textContent = total > 0 ? lei(total - alloc) : '—'; r.classList.toggle('over', total > 0 && alloc > total);
+  const f = document.getElementById('fill'); const pct = total > 0 ? Math.min(100, alloc / total * 100) : 0;
+  f.style.width = pct + '%'; f.classList.toggle('over', total > 0 && alloc > total);
+}
+function toast(msg){
+  const t = document.getElementById('toast'); t.textContent = msg; t.hidden = false;
+  clearTimeout(toast.h); toast.h = setTimeout(() => { t.hidden = true; }, 2200);
+}
+function markdown(){
+  const g = id => document.getElementById(id).value.trim();
+  const total = num(g('f-suma'));
+  const out = ['# Anexa nr. 1 la Contractul de sponsorizare ' + (g('f-contract') || 'nr. ___'), '',
+    '**Lista proiectelor eligibile la finanțare din sponsorizarea acordată prin contract**', '',
+    '- Sponsor: ' + (g('f-sponsor') || '___'),
+    '- Beneficiar: Asociația „Lubavitch”, CIF 54735214',
+    '- Valoarea sponsorizării (art. 2.1): ' + (total ? lei(total) : '___'), ''];
+  TREE.forEach(sec => {
+    out.push('## ' + sec.k + ') ' + sec.t);
+    out.push('_' + sec.d + '_', '');
+    sec.items.forEach((it, i) => {
+      const id = sec.k + i, v = S.v[id] || {};
+      let line = '- [' + (S.c[id] ? 'x' : ' ') + '] **' + it.t + '**' + (it.ref ? ' · ' + it.ref : '');
+      if (it.p) line += '\n  - ' + it.p;
+      if (!sec.plain && S.c[id]) {
+        const extra = [v.b && 'Buget: ' + lei(num(v.b)), v.p && 'Perioada: ' + v.p, v.r && 'Responsabil: ' + v.r].filter(Boolean);
+        if (extra.length) line += '\n  - ' + extra.join(' · ');
+      }
+      out.push(line);
+    });
+    if (!sec.plain) out.push('', 'Subtotal ' + sec.k + '): ' + lei(secBudget(sec)));
+    if (sec.tg) out.push('', 'Grupuri țintă: ' + sec.tg.join('; '));
+    out.push('');
+  });
+  const alloc = TREE.filter(s => !s.plain).reduce((a, s) => a + secBudget(s), 0);
+  out.push('**Total alocat: ' + lei(alloc) + (total ? ' din ' + lei(total) + ' · nealocat ' + lei(total - alloc) : '') + '**', '');
+  out.push('Semnături: Sponsor ____________   Beneficiar (președinte Deutsch Naftali Matityauo) ____________');
+  return out.join('\n');
+}
+
+const tree = document.getElementById('tree');
+tree.addEventListener('click', e => {
+  const h = e.target.closest('.sec-h');
+  if (h) { const k = h.dataset.k; S.open[k] = !(S.open[k] !== false); save(); render(); }
+});
+tree.addEventListener('change', e => {
+  const el = e.target;
+  if (el.type === 'checkbox') { S.c[el.id.slice(2)] = el.checked; save(); render(); }
+});
+tree.addEventListener('input', e => {
+  const el = e.target;
+  if (el.dataset.f) { const id = el.id.slice(2); S.v[id] = S.v[id] || {}; S.v[id][el.dataset.f] = el.value; save(); if (el.dataset.f === 'b') { summary(); secTotals(); } }
+});
+function secTotals(){
+  TREE.filter(s => !s.plain).forEach(s => { const n = document.querySelector('.sec-h[data-k="' + s.k + '"] .n span'); if (n) n.textContent = lei(secBudget(s)); });
+}
+['f-sponsor','f-contract','f-suma'].forEach(id => {
+  const el = document.getElementById(id);
+  el.value = (S.v[id] && S.v[id].d) || '';
+  el.addEventListener('input', () => { S.v[id] = { d: el.value }; save(); summary(); });
+});
+document.getElementById('b-exp').onclick = () => { TREE.forEach(s => S.open[s.k] = true); save(); render(); };
+document.getElementById('b-col').onclick = () => { TREE.forEach(s => S.open[s.k] = false); save(); render(); };
+document.getElementById('b-reset').onclick = () => { S.c = {}; save(); render(); toast('Bifele au fost golite. Bugetele și textele rămân.'); };
+document.getElementById('b-md').onclick = () => {
+  const md = markdown();
+  const fallback = () => {
+    const ta = document.createElement('textarea'); ta.value = md; ta.style.cssText = 'position:fixed;left:-9999px';
+    document.body.appendChild(ta); ta.select();
+    try { document.execCommand('copy'); toast('Copiat ca Markdown.'); } catch (e) { toast('Selectează și copiază textul manual.'); }
+    document.body.removeChild(ta);
+  };
+  if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(md).then(() => toast('Copiat ca Markdown.'), fallback); else fallback();
+};
+render();
+</script>
